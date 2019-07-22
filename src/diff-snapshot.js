@@ -155,11 +155,7 @@ function diffImageToSnapshot(options) {
 
       const totalPixels = imageWidth * imageHeight;
       diffRatio = diffPixelCount / totalPixels;
-      // Always fail test on image size mismatch
-      if (hasSizeMismatch) {
-        pass = false;
-        diffSize = true;
-      } else if (failureThresholdType === 'pixel') {
+      if (failureThresholdType === 'pixel') {
         pass = diffPixelCount <= failureThreshold;
       } else if (failureThresholdType === 'percent') {
         pass = diffRatio <= failureThreshold;
